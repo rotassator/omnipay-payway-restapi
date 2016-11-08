@@ -1,0 +1,36 @@
+{
+    "name": "rotassator/omnipay-payway-restapi",
+    "type": "library",
+    "description": "PayWay REST API gateway for Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "payway",
+        "westpac",
+        "purchase",
+        "token"
+    ],
+    "homepage": "https://github.com/Moult/omnipay-payway",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Steve Dixon",
+            "email": "steve@rotassator.com"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "autoload": {
+        "psr-4": { "Omnipay\\PaywayRest\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    }
+}
