@@ -16,11 +16,9 @@ class CheckNetworkRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('token');
+        // $this->validate('token');
 
-        $data = array();
-
-        return $data;
+        return array();
     }
 
     public function getEndpoint()
