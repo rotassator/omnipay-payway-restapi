@@ -13,7 +13,7 @@
         "purchase",
         "token"
     ],
-    "homepage": "https://github.com/Moult/omnipay-payway",
+    "homepage": "https://github.com/rotassator/omnipay-payway-restapi",
     "license": "MIT",
     "authors": [
         {

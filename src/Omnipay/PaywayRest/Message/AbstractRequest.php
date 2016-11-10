@@ -16,11 +16,7 @@ namespace Omnipay\PaywayRest\Message;
  */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
-    /**
-     * Live or Test Endpoint URL.
-     *
-     * @var string URL
-     */
+    /** @var string Endpoint URL */
     protected $endpoint = 'https://api.payway.com.au/rest/v1';
 
     /**
@@ -75,5 +71,88 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setMerchant($value)
     {
         return $this->setParameter('merchant', $value);
+    }
+
+    /**
+     * Get Use Secret Key setting
+     * @return bool Use secret API key if true
+     */
+    public function getUseSecretKey()
+    {
+        return $this->getParameter('use_secret_key');
+    }
+
+    /**
+     * Set Use Secret Key setting
+     * @param  string $value Flag to use secret key
+     */
+    public function setUseSecretKey($value)
+    {
+        return $this->setParameter('use_secret_key', $value);
+    }
+
+    /**
+     * Get HTTP method
+     * @return string HTTP method (GET, PUT, etc)
+     */
+    public function getHttpMethod()
+    {
+        return 'GET';
+    }
+
+    /**
+     * Get request headers
+     * @return array Request headers
+     */
+    public function getRequestHeaders()
+    {
+        return array();
+    }
+
+    /**
+     * Send data request
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function sendData($data)
+    {
+        // enforce TLS >= v1.2 (https://www.payway.com.au/rest-docs/index.html#basics)
+        $config = $this->httpClient->getConfig();
+        $curlOptions = $config->get('curl.options');
+        $curlOptions[CURLOPT_SSLVERSION] = 6;
+        $config->set('curl.options', $curlOptions);
+        $this->httpClient->setConfig($config);
+
+        // don't throw exceptions for 4xx errors
+        $this->httpClient->getEventDispatcher()->addListener(
+            'request.error',
+            function ($event) {
+                if ($event['response']->isClientError()) {
+                    $event->stopPropagation();
+                }
+            }
+        );
+
+        $request = $this->httpClient->createRequest(
+            $this->getHttpMethod(),
+            $this->getEndpoint(),
+            $this->getRequestHeaders(),
+            $data
+        );
+
+        // get the appropriate API key
+        $apikey = ($this->getUseSecretKey()) ? $this->getApiKeySecret() : $this->getApiKeyPublic();
+        // send the request
+        $response = $request
+            ->setHeader('Authorization', 'Basic ' . base64_encode($apikey . ':'))
+            ->send();
+
+        $this->response = new Response($this, $response->json());
+
+        if ($response->hasHeader('Request-Id')) {
+            $this->response->setRequestId((string) $response->getHeader('Request-Id'));
+        }
+
+        return $this->response;
     }
 }
