@@ -17,14 +17,13 @@ class PurchaseRequest extends AbstractRequest
     {
         $this->validate(
             'customerNumber',
-            'transactionType',
             'principalAmount',
             'currency'
         );
 
         $data = array(
             'customerNumber'  => $this->getCustomerNumber(),
-            'transactionType' => $this->getTransactionType(),
+            'transactionType' => 'payment',
             'principalAmount' => $this->getPrincipalAmount(),
             'currency'        => $this->getCurrency(),
         );
@@ -44,6 +43,16 @@ class PurchaseRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->endpoint.'/charges';
+        return $this->endpoint.'transactions';
+    }
+
+    public function getHttpMethod()
+    {
+        return 'POST';
+    }
+
+    public function getUseSecretKey()
+    {
+        return true;
     }
 }
