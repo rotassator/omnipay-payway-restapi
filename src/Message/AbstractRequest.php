@@ -351,8 +351,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
         $this->response = new Response($this, $response->json());
 
-        // save the HTTP response code
+        // save additional info
         $this->response->setResponseCode($response->getStatusCode());
+        $this->response->setTransactionType($this->getTransactionType());
 
         return $this->response;
     }

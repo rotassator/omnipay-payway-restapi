@@ -16,8 +16,10 @@ class Response extends AbstractResponse
 {
     /** @var string Request ID */
     protected $requestId = null;
-    /** @var string HTTP Response Code */
+    /** @var string HTTP response code */
     protected $responseCode = null;
+    /** @var string Transaction type */
+    protected $transactionType = null;
 
     /**
      * Is the transaction successful?
@@ -25,10 +27,49 @@ class Response extends AbstractResponse
      */
     public function isSuccessful()
     {
-        return $this->getData('status') && in_array($this->getData('status'), array(
+        // get response code
+        $code = $this->getResponseCode();
+
+        if ($code === 200) {  // OK
+            return true;
+        }
+
+        if ($code === 201) {   // Created
+            if ($this->getTransactionType() === 'payment') {
+                return $this->isApproved();
+            }
+            return true;
+        }
+
+        if ($code === 202 && $this->isPending()) {   // Accepted
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Is the transaction approved?
+     * @return boolean True if approved
+     */
+    public function isApproved()
+    {
+        return in_array($this->getStatus(), array(
             'approved',
             'approved*',
         ));
+    }
+
+    /**
+     * Is the transaction pending?
+     * @return boolean True if pending
+     */
+    public function isPending()
+    {
+        return (
+            $this->getTransactionType() === 'payment'
+            && $this->getStatus() === 'pending'
+        );
     }
 
     /**
@@ -56,6 +97,15 @@ class Response extends AbstractResponse
     public function getContact()
     {
         return $this->getData('contact');
+    }
+
+    /**
+     * Get status
+     * @return array Returned status
+     */
+    public function getStatus()
+    {
+        return $this->getData('status');
     }
 
     /**
@@ -146,8 +196,26 @@ class Response extends AbstractResponse
      * Set HTTP Response Code
      * @parm string Response Code
      */
-    public function setResponseCode($responseCode)
+    public function setResponseCode($value)
     {
-        $this->responseCode = $responseCode;
+        $this->responseCode = $value;
+    }
+
+    /**
+     * Get transaction type
+     * @return string|null Transaction type
+     */
+    public function getTransactionType()
+    {
+        return $this->transactionType;
+    }
+
+    /**
+     * Set Transaction Type
+     * @return string|null Transaction type
+     */
+    public function setTransactionType($value)
+    {
+        return $this->transactionType = $value;
     }
 }
