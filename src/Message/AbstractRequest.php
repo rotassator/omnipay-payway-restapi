@@ -357,4 +357,21 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
         return $this->response;
     }
+
+    /**
+     * Add multiple parameters to data
+     * @param array $data  Data array
+     * @param array $parms Parameters to add to data
+     */
+    public function addToData(array $data = array(), array $parms = array())
+    {
+        foreach ($parms as $parm) {
+            $getter = 'get' . ucfirst($parm);
+            if (method_exists($this, $getter) && $this->$getter()) {
+                $data[$parm] = $this->$getter();
+            }
+        }
+
+        return $data;
+    }
 }
