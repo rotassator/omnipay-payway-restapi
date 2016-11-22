@@ -344,16 +344,15 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
         // get the appropriate API key
         $apikey = ($this->getUseSecretKey()) ? $this->getApiKeySecret() : $this->getApiKeyPublic();
+        $request->setHeader('Authorization', 'Basic ' . base64_encode($apikey . ':'));
+
         // send the request
-        $response = $request
-            ->setHeader('Authorization', 'Basic ' . base64_encode($apikey . ':'))
-            ->send();
+        $response = $request->send();
 
         $this->response = new Response($this, $response->json());
 
-        if ($response->hasHeader('Request-Id')) {
-            $this->response->setRequestId((string) $response->getHeader('Request-Id'));
-        }
+        // save the HTTP response code
+        $this->response->setResponseCode($response->getStatusCode());
 
         return $this->response;
     }

@@ -16,6 +16,8 @@ class Response extends AbstractResponse
 {
     /** @var string Request ID */
     protected $requestId = null;
+    /** @var string HTTP Response Code */
+    protected $responseCode = null;
 
     /**
      * Is the transaction successful?
@@ -79,8 +81,8 @@ class Response extends AbstractResponse
         if ($this->isSuccessful()) {
             return null;
         }
-        // get error data
-        $data = $this->getData('data');
+        // get error data (array in data)
+        $data = isset($this->getData('data')[0]) ? $this->getData('data')[0] : null;
         if ($key) {
             return isset($data[$key]) ? $data[$key] : null;
         }
@@ -129,5 +131,23 @@ class Response extends AbstractResponse
     public function setRequestId($requestId)
     {
         $this->requestId = $requestId;
+    }
+
+    /**
+     * Get HTTP Response Code
+     * @return string
+     */
+    public function getResponseCode()
+    {
+        return $this->responseCode;
+    }
+
+    /**
+     * Set HTTP Response Code
+     * @parm string Response Code
+     */
+    public function setResponseCode($responseCode)
+    {
+        $this->responseCode = $responseCode;
     }
 }
