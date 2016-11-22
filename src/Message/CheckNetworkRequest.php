@@ -1,12 +1,12 @@
 <?php
 
 /**
- * PayWayRest check network
+ * PaywayRest check network
  */
 namespace Omnipay\PaywayRest\Message;
 
 /**
- * PayWayRest check network
+ * PaywayRest check network
  *
  * Check network connectivity to PayWay REST API.
  *
@@ -16,8 +16,6 @@ class CheckNetworkRequest extends AbstractRequest
 {
     public function getData()
     {
-        // $this->validate('token');
-
         return array();
     }
 

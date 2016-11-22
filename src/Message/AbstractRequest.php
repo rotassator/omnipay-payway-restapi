@@ -1,0 +1,360 @@
+<?php
+/**
+ * PaywayRest Abstract Request.
+ */
+namespace Omnipay\PaywayRest\Message;
+
+use Omnipay\PaywayRest\Helper\Uuid;
+
+/**
+ * PayWay REST API Abstract Request.
+ *
+ * This is the parent class for all PayWay requests.
+ *
+ * @todo Add usage documention, including live and test details
+ *
+ * @see \Omnipay\PaywayRest\Gateway
+ * @link https://www.payway.com.au/rest-docs/index.html
+ */
+abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
+{
+    /** @var string Endpoint URL */
+    protected $endpoint = 'https://api.payway.com.au/rest/v1';
+
+    /**
+     * Get API publishable key
+     * @return string
+     */
+    public function getApiKeyPublic()
+    {
+        return $this->getParameter('apiKeyPublic');
+    }
+
+    /**
+     * Set API publishable key
+     * @param  string $value API publishable key
+     */
+    public function setApiKeyPublic($value)
+    {
+        return $this->setParameter('apiKeyPublic', $value);
+    }
+
+    /**
+     * Get API secret key
+     * @return string
+     */
+    public function getApiKeySecret()
+    {
+        return $this->getParameter('apiKeySecret');
+    }
+
+    /**
+     * Set API secret key
+     * @param  string $value API secret key
+     */
+    public function setApiKeySecret($value)
+    {
+        return $this->setParameter('apiKeySecret', $value);
+    }
+
+    /**
+     * Get Merchant
+     * @return string Merchant ID
+     */
+    public function getMerchantId()
+    {
+        return $this->getParameter('merchantId');
+    }
+
+    /**
+     * Set Merchant
+     * @param  string $value Merchant ID
+     */
+    public function setMerchantId($value)
+    {
+        return $this->setParameter('merchantId', $value);
+    }
+
+    /**
+     * Get Use Secret Key setting
+     * @return bool Use secret API key if true
+     */
+    public function getUseSecretKey()
+    {
+        return $this->getParameter('useSecretKey');
+    }
+
+    /**
+     * Set Use Secret Key setting
+     * @param  string $value Flag to use secret key
+     */
+    public function setUseSecretKey($value)
+    {
+        return $this->setParameter('useSecretKey', $value);
+    }
+
+    /**
+     * Get single-use token
+     * @return string Token key
+     */
+    public function getSingleUseTokenId()
+    {
+        return $this->getParameter('singleUseTokenId');
+    }
+
+    /**
+     * Set single-use token
+     * @param  string $value Token Key
+     */
+    public function setSingleUseTokenId($value)
+    {
+        return $this->setParameter('singleUseTokenId', $value);
+    }
+
+    /**
+     * Get Idempotency Key
+     * @return string Idempotency Key
+     */
+    public function getIdempotencyKey()
+    {
+        return $this->getParameter('idempotency_key') ?: Uuid::create();
+    }
+
+    /**
+     * Set Idempotency Key
+     * @param  string $value Idempotency Key
+     */
+    public function setIdempotencyKey($value)
+    {
+        return $this->setParameter('idempotency_key', $value);
+    }
+
+    public function getCustomerNumber()
+    {
+        return $this->getParameter('customerNumber');
+    }
+
+    public function setCustomerNumber($value)
+    {
+        return $this->setParameter('customerNumber', $value);
+    }
+
+    public function getTransactionType()
+    {
+        return $this->getParameter('transactionType');
+    }
+
+    public function setTransactionType($value)
+    {
+        return $this->setParameter('transactionType', $value);
+    }
+
+    public function getPrincipalAmount()
+    {
+        return $this->getParameter('principalAmount');
+    }
+
+    public function setPrincipalAmount($value)
+    {
+        return $this->setParameter('principalAmount', $value);
+    }
+
+    public function getCurrency()
+    {
+        return $this->getParameter('currency');
+    }
+
+    public function setCurrency($value)
+    {
+        return $this->setParameter('currency', $value);
+    }
+
+    public function getOrderNumber()
+    {
+        return $this->getParameter('orderNumber');
+    }
+
+    public function setOrderNumber($value)
+    {
+        return $this->setParameter('orderNumber', $value);
+    }
+
+    public function getBankAccountId()
+    {
+        return $this->getParameter('bankAccountId');
+    }
+
+    public function setBankAccountId($value)
+    {
+        return $this->setParameter('bankAccountId', $value);
+    }
+
+    public function getCustomerName()
+    {
+        return $this->getParameter('customerName');
+    }
+
+    public function setCustomerName($value)
+    {
+        return $this->setParameter('customerName', $value);
+    }
+
+    public function getEmailAddress()
+    {
+        return $this->getParameter('emailAddress');
+    }
+
+    public function setEmailAddress($value)
+    {
+        return $this->setParameter('emailAddress', $value);
+    }
+
+    public function getSendEmailReceipts()
+    {
+        return $this->getParameter('sendEmailReceipts');
+    }
+
+    public function setSendEmailReceipts($value)
+    {
+        return $this->setParameter('sendEmailReceipts', $value);
+    }
+
+    public function getPhoneNumber()
+    {
+        return $this->getParameter('phoneNumber');
+    }
+
+    public function setPhoneNumber($value)
+    {
+        return $this->setParameter('phoneNumber', $value);
+    }
+
+    public function getStreet1()
+    {
+        return $this->getParameter('street1');
+    }
+
+    public function setStreet1($value)
+    {
+        return $this->setParameter('street1', $value);
+    }
+
+    public function getStreet2()
+    {
+        return $this->getParameter('street2');
+    }
+
+    public function setStreet2($value)
+    {
+        return $this->setParameter('street2', $value);
+    }
+
+    public function getCityName()
+    {
+        return $this->getParameter('cityName');
+    }
+
+    public function setCityName($value)
+    {
+        return $this->setParameter('cityName', $value);
+    }
+
+    public function getState()
+    {
+        return $this->getParameter('state');
+    }
+
+    public function setState($value)
+    {
+        return $this->setParameter('state', $value);
+    }
+
+    public function getPostalCode()
+    {
+        return $this->getParameter('postalCode');
+    }
+    public function setPostalCode($value)
+    {
+        return $this->setParameter('postalCode', $value);
+    }
+
+    /**
+     * Get HTTP method
+     * @return string HTTP method (GET, PUT, etc)
+     */
+    public function getHttpMethod()
+    {
+        return 'GET';
+    }
+
+    /**
+     * Get request headers
+     * @return array Request headers
+     */
+    public function getRequestHeaders()
+    {
+        // common headers
+        $headers = array(
+            'Accept' => 'application/json',
+        );
+
+        // set content type
+        if ($this->getHttpMethod() !== 'GET') {
+            $headers['Content-Type']    = 'application/x-www-form-urlencoded';
+        }
+
+        // prevent duplicate POSTs
+        if ($this->getHttpMethod() === 'POST') {
+            $headers['Idempotency-Key'] = $this->getIdempotencyKey();
+        }
+
+        return $headers;
+    }
+
+    /**
+     * Send data request
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function sendData($data)
+    {
+        // enforce TLS >= v1.2 (https://www.payway.com.au/rest-docs/index.html#basics)
+        $config = $this->httpClient->getConfig();
+        $curlOptions = $config->get('curl.options');
+        $curlOptions[CURLOPT_SSLVERSION] = 6;
+        $config->set('curl.options', $curlOptions);
+        $this->httpClient->setConfig($config);
+
+        // don't throw exceptions for 4xx errors
+        $this->httpClient->getEventDispatcher()->addListener(
+            'request.error',
+            function ($event) {
+                if ($event['response']->isClientError()) {
+                    $event->stopPropagation();
+                }
+            }
+        );
+
+        $request = $this->httpClient->createRequest(
+            $this->getHttpMethod(),
+            $this->getEndpoint(),
+            $this->getRequestHeaders(),
+            $data
+        );
+
+        // get the appropriate API key
+        $apikey = ($this->getUseSecretKey()) ? $this->getApiKeySecret() : $this->getApiKeyPublic();
+        // send the request
+        $response = $request
+            ->setHeader('Authorization', 'Basic ' . base64_encode($apikey . ':'))
+            ->send();
+
+        $this->response = new Response($this, $response->json());
+
+        if ($response->hasHeader('Request-Id')) {
+            $this->response->setRequestId((string) $response->getHeader('Request-Id'));
+        }
+
+        return $this->response;
+    }
+}
