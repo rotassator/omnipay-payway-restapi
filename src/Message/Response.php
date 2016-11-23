@@ -82,6 +82,15 @@ class Response extends AbstractResponse
     }
 
     /**
+     * Get Transaction reference
+     * @return string Payway transaction reference
+     */
+    public function getTransactionReference()
+    {
+        return $this->getTransactionId();
+    }
+
+    /**
      * Get Customer Number
      * @return string|null
      */
@@ -145,6 +154,29 @@ class Response extends AbstractResponse
      */
     public function getMessage()
     {
+        return ($this->getErrorMessage())
+            ? $this->getErrorMessage() . ' (' . $this->getErrorFieldName() . ')'
+            : ucfirst($this->getTransactionType());
+    }
+
+    /**
+     * Get code
+     * @return string|null Error message or null if successful
+     */
+    public function getCode()
+    {
+        return join(array(' ',
+            $this->getResponseCode() . ' ' . $this->getResponseText(),
+            '(' . $this->getHttpResponseCode() . ' ' . $this->getHttpResponseCodeText() . ')',
+        ));
+    }
+
+    /**
+     * Get error message from the response
+     * @return string|null Error message or null if successful
+     */
+    public function getErrorMessage()
+    {
         return $this->getErrorData('message');
     }
 
@@ -164,6 +196,24 @@ class Response extends AbstractResponse
     public function getErrorFieldValue()
     {
         return $this->getErrorData('fieldValue');
+    }
+
+    /**
+     * Get Payway Response Code
+     * @return string Returned response code
+     */
+    public function getResponseCode()
+    {
+        return $this->getData('responseCode');
+    }
+
+    /**
+     * Get Payway Response Text
+     * @return string Returned response Text
+     */
+    public function getResponseText()
+    {
+        return $this->getData('responseText');
     }
 
     /**
