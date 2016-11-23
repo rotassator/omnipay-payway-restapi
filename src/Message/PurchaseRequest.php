@@ -43,7 +43,7 @@ class PurchaseRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->endpoint.'transactions';
+        return $this->endpoint . '/transactions';
     }
 
     public function getHttpMethod()
