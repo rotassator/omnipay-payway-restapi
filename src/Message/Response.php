@@ -154,9 +154,13 @@ class Response extends AbstractResponse
      */
     public function getMessage()
     {
-        return ($this->getErrorMessage())
-            ? $this->getErrorMessage() . ' (' . $this->getErrorFieldName() . ')'
-            : ucfirst($this->getTransactionType());
+        if ($this->getErrorMessage()) {
+            return $this->getErrorMessage() . ' (' . $this->getErrorFieldName() . ')';
+        }
+
+        if ($this->isSuccessful()) {
+            return ($this->getStatus()) ? ucfirst($this->getStatus()) : 'Successful';
+        }
     }
 
     /**
