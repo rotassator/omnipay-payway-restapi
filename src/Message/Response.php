@@ -17,7 +17,7 @@ class Response extends AbstractResponse
     /** @var string Request ID */
     protected $requestId = null;
     /** @var string HTTP response code */
-    protected $responseCode = null;
+    protected $httpResponseCode = null;
     /** @var string Transaction type */
     protected $transactionType = null;
 
@@ -28,7 +28,7 @@ class Response extends AbstractResponse
     public function isSuccessful()
     {
         // get response code
-        $code = $this->getResponseCode();
+        $code = $this->getHttpResponseCode();
 
         if ($code === 200) {  // OK
             return true;
@@ -187,18 +187,30 @@ class Response extends AbstractResponse
      * Get HTTP Response Code
      * @return string
      */
-    public function getResponseCode()
+    public function getHttpResponseCode()
     {
-        return $this->responseCode;
+        return $this->httpResponseCode;
     }
 
     /**
      * Set HTTP Response Code
      * @parm string Response Code
      */
-    public function setResponseCode($value)
+    public function setHttpResponseCode($value)
     {
-        $this->responseCode = $value;
+        $this->httpResponseCode = $value;
+    }
+
+    /**
+     * Get HTTP Response code text
+     * @return string
+     */
+    public function getHttpResponseCodeText()
+    {
+        $code = $this->getHttpResponseCode();
+        $statusTexts = \Symfony\Component\HttpFoundation\Response::$statusTexts;
+
+        return (isset($statusTexts[$code])) ? $statusTexts[$code] : null;
     }
 
     /**
