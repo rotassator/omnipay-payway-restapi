@@ -161,7 +161,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getCurrency()
     {
-        return $this->getParameter('currency');
+        // PayWay expects lowercase currency values
+        return ($this->getParameter('currency'))
+            ? strtolower($this->getParameter('currency'))
+            : null;
     }
 
     public function setCurrency($value)
