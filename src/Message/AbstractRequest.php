@@ -117,7 +117,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function getIdempotencyKey()
     {
-        return $this->getParameter('idempotency_key') ?: Uuid::create();
+        return $this->getParameter('idempotencyKey') ?: Uuid::create();
     }
 
     /**
@@ -126,7 +126,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function setIdempotencyKey($value)
     {
-        return $this->setParameter('idempotency_key', $value);
+        return $this->setParameter('idempotencyKey', $value);
     }
 
     public function getCustomerNumber()
