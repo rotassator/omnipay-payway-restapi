@@ -101,6 +101,18 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * Refund request
+     *
+     * @param array $parameters
+     * @return \Omnipay\PaywayRest\Message\RefundRequest
+     */
+    public function refund(array $parameters = array())
+    {
+        /** @todo create customer before payment if none supplied */
+        return $this->createRequest('\Omnipay\PaywayRest\Message\RefundRequest', $parameters);
+    }
+
+    /**
      * Create Customer
      *
      * @param array $parameters
