@@ -149,6 +149,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('transactionType', $value);
     }
 
+    public function getAmount()
+    {
+        return $this->getParameter('amount');
+    }
+
+    public function setAmount($value)
+    {
+        return $this->setParameter('amount', $value);
+    }
+
     public function getPrincipalAmount()
     {
         return $this->getParameter('principalAmount');
@@ -280,6 +290,27 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('postalCode', $value);
     }
+
+    public function getTransactionReference()
+    {
+        return $this->getParameter('transactionReference');
+    }
+
+    public function setTransactionReference($value)
+    {
+        return $this->setParameter('transactionReference', $value);
+    }
+
+    public function getTransactionId()
+    {
+        return $this->getTransactionReference();
+    }
+
+    public function setTransactionId($value)
+    {
+        return $this->setTransactionReference($value);
+    }
+
 
     /**
      * Get HTTP method
