@@ -311,6 +311,67 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setTransactionReference($value);
     }
 
+    public function getFrequency()
+    {
+        return $this->getParameter('frequency') ?: 'once';
+    }
+
+    public function setFrequency($value)
+    {
+        return $this->setParameter('frequency', $value);
+    }
+
+    public function getNextPaymentDate()
+    {
+        // default to today's date
+        return $this->getParameter('nextPaymentDate') ?: date('j M Y');
+    }
+
+    public function setNextPaymentDate($value)
+    {
+        return $this->setParameter('nextPaymentDate', $value);
+    }
+
+    public function getRegularPrincipalAmount()
+    {
+        return $this->getParameter('regularPrincipalAmount');
+    }
+
+    public function setRegularPrincipalAmount($value)
+    {
+        return $this->setParameter('regularPrincipalAmount', $value);
+    }
+
+    public function getNextPrincipalAmount()
+    {
+        return $this->getParameter('nextPrincipalAmount');
+    }
+
+    public function setNextPrincipalAmount($value)
+    {
+        return $this->setParameter('nextPrincipalAmount', $value);
+    }
+
+    public function getNumberOfPaymentsRemaining()
+    {
+        return $this->getParameter('numberOfPaymentsRemaining');
+    }
+
+    public function setNumberOfPaymentsRemaining($value)
+    {
+        return $this->setParameter('numberOfPaymentsRemaining', $value);
+    }
+
+    public function getFinalPrincipalAmount()
+    {
+        return $this->getParameter('finalPrincipalAmount');
+    }
+
+    public function setFinalPrincipalAmount($value)
+    {
+        return $this->setParameter('finalPrincipalAmount', $value);
+    }
+
 
     /**
      * Get HTTP method
