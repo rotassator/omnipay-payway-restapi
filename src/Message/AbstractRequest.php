@@ -117,7 +117,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function getIdempotencyKey()
     {
-        return $this->getParameter('idempotency_key') ?: Uuid::create();
+        return $this->getParameter('idempotencyKey') ?: Uuid::create();
     }
 
     /**
@@ -126,7 +126,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function setIdempotencyKey($value)
     {
-        return $this->setParameter('idempotency_key', $value);
+        return $this->setParameter('idempotencyKey', $value);
     }
 
     public function getCustomerNumber()
@@ -147,6 +147,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setTransactionType($value)
     {
         return $this->setParameter('transactionType', $value);
+    }
+
+    public function getAmount()
+    {
+        return $this->getParameter('amount');
+    }
+
+    public function setAmount($value)
+    {
+        return $this->setParameter('amount', $value);
     }
 
     public function getPrincipalAmount()
@@ -280,6 +290,88 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return $this->setParameter('postalCode', $value);
     }
+
+    public function getTransactionReference()
+    {
+        return $this->getParameter('transactionReference');
+    }
+
+    public function setTransactionReference($value)
+    {
+        return $this->setParameter('transactionReference', $value);
+    }
+
+    public function getTransactionId()
+    {
+        return $this->getTransactionReference();
+    }
+
+    public function setTransactionId($value)
+    {
+        return $this->setTransactionReference($value);
+    }
+
+    public function getFrequency()
+    {
+        return $this->getParameter('frequency') ?: 'once';
+    }
+
+    public function setFrequency($value)
+    {
+        return $this->setParameter('frequency', $value);
+    }
+
+    public function getNextPaymentDate()
+    {
+        // default to today's date
+        return $this->getParameter('nextPaymentDate') ?: date('j M Y');
+    }
+
+    public function setNextPaymentDate($value)
+    {
+        return $this->setParameter('nextPaymentDate', $value);
+    }
+
+    public function getRegularPrincipalAmount()
+    {
+        return $this->getParameter('regularPrincipalAmount');
+    }
+
+    public function setRegularPrincipalAmount($value)
+    {
+        return $this->setParameter('regularPrincipalAmount', $value);
+    }
+
+    public function getNextPrincipalAmount()
+    {
+        return $this->getParameter('nextPrincipalAmount');
+    }
+
+    public function setNextPrincipalAmount($value)
+    {
+        return $this->setParameter('nextPrincipalAmount', $value);
+    }
+
+    public function getNumberOfPaymentsRemaining()
+    {
+        return $this->getParameter('numberOfPaymentsRemaining');
+    }
+
+    public function setNumberOfPaymentsRemaining($value)
+    {
+        return $this->setParameter('numberOfPaymentsRemaining', $value);
+    }
+
+    public function getFinalPrincipalAmount()
+    {
+        return $this->getParameter('finalPrincipalAmount');
+    }
+
+    public function setFinalPrincipalAmount($value)
+    {
+        return $this->setParameter('finalPrincipalAmount', $value);
+    }
+
 
     /**
      * Get HTTP method

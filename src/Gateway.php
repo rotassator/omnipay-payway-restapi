@@ -97,6 +97,13 @@ class Gateway extends AbstractGateway
     public function purchase(array $parameters = array())
     {
         /** @todo create customer before payment if none supplied */
+
+        // schedule regular payment
+        if (isset($parameters['frequency']) && $parameters['frequency'] !== 'once') {
+            return $this->createRequest('\Omnipay\PaywayRest\Message\RegularPaymentRequest', $parameters);
+        }
+
+        // process once-off payment
         return $this->createRequest('\Omnipay\PaywayRest\Message\PurchaseRequest', $parameters);
     }
 
