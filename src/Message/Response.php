@@ -87,7 +87,7 @@ class Response extends AbstractResponse
      */
     public function getTransactionReference()
     {
-        return $this->getTransactionId();
+        return $this->getData('receiptNumber');
     }
 
     /**
