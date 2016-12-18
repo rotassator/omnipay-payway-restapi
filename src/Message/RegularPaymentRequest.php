@@ -35,9 +35,6 @@ class RegularPaymentRequest extends AbstractRequest
         if ($this->getFinalPrincipalAmount()) {
             $data['finalPrincipalAmount'] = $this->getFinalPrincipalAmount();
         }
-        if ($this->getOrderNumber()) {
-            $data['orderNumber'] = $this->getOrderNumber();
-        }
 
         return $data;
     }
