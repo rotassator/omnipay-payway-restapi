@@ -14,11 +14,12 @@ class CreateCustomerRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('singleUseTokenId', 'merchantId');
+        $this->validate('singleUseTokenId');
 
         $data = array(
             'singleUseTokenId' => $this->getSingleUseTokenId(),
             'merchantId'       => $this->getMerchantId(),
+            'bankAccountId'    => $this->getBankAccountId(),
         );
 
         $this->addToData($data, array(
