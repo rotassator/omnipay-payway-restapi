@@ -1,14 +1,16 @@
 <?php
 
 namespace Omnipay\PaywayRest;
-
 use Omnipay\Common\AbstractGateway;
 
+/**
+ * PayWay Credit Card gateway
+ */
 class Gateway extends AbstractGateway
 {
     public function getName()
     {
-        return 'Westpac PayWay';
+        return 'Westpac PayWay Credit Card';
     }
 
     public function getDefaultParameters()
