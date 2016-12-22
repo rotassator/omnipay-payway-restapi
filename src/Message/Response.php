@@ -273,7 +273,7 @@ class Response extends AbstractResponse
      */
     public function getTransactionType()
     {
-        return $this->transactionType;
+        return $this->getData('transactionType');
     }
 
     /**
