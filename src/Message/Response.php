@@ -161,6 +161,8 @@ class Response extends AbstractResponse
         if ($this->isSuccessful()) {
             return ($this->getStatus()) ? ucfirst($this->getStatus()) : 'Successful';
         }
+        // default to unsuccessful message
+        return 'The transaction was unsuccessful.';
     }
 
     /**
@@ -169,9 +171,11 @@ class Response extends AbstractResponse
      */
     public function getCode()
     {
-        return join(array(' ',
-            $this->getResponseCode() . ' ' . $this->getResponseText(),
-            '(' . $this->getHttpResponseCode() . ' ' . $this->getHttpResponseCodeText() . ')',
+        return join(' ', array(
+            $this->getResponseCode(),
+            $this->getResponseText(),
+            '(' . $this->getHttpResponseCode(),
+            $this->getHttpResponseCodeText() . ')',
         ));
     }
 
