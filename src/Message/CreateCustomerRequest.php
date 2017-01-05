@@ -40,12 +40,17 @@ class CreateCustomerRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->endpoint . '/customers';
+        // check for specified customer reference
+        $customerNumber = $this->getCustomerNumber();
+        // add customer number to URL if specified
+        $ending = ($customerNumber) ? '/' . $customerNumber : '';
+
+        return $this->endpoint . '/customers' . $ending;
     }
 
     public function getHttpMethod()
     {
-        return 'POST';
+        return $this->getCustomerNumber() ? 'PUT' : 'POST';
     }
 
     public function getUseSecretKey()
