@@ -1,6 +1,6 @@
 <?php
-
 namespace Omnipay\PaywayRest;
+
 use Omnipay\Common\AbstractGateway;
 
 /**
