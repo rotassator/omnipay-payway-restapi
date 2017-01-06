@@ -261,4 +261,31 @@ class Response extends AbstractResponse
     {
         return $this->getData('transactionType');
     }
+
+    /**
+     * Get payment method
+     * @return string|null Payment method
+     */
+    public function getPaymentMethod()
+    {
+        return $this->getData('paymentMethod');
+    }
+
+    /**
+     * Get credit card information
+     * @return string|null Transaction credit card details
+     */
+    public function getCreditCard()
+    {
+        return $this->getData('creditCard');
+    }
+
+    /**
+     * Get bank account information
+     * @return string|null Transaction bank account details
+     */
+    public function getBankAccount()
+    {
+        return $this->getData('bankAccount');
+    }
 }
