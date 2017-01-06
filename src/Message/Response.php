@@ -233,30 +233,12 @@ class Response extends AbstractResponse
     }
 
     /**
-     * Set request id
-     * @return AbstractRequest provides a fluent interface.
-     */
-    public function setRequestId($requestId)
-    {
-        $this->requestId = $requestId;
-    }
-
-    /**
      * Get HTTP Response Code
      * @return string
      */
     public function getHttpResponseCode()
     {
         return $this->httpResponseCode;
-    }
-
-    /**
-     * Set HTTP Response Code
-     * @parm string Response Code
-     */
-    public function setHttpResponseCode($value)
-    {
-        $this->httpResponseCode = $value;
     }
 
     /**
@@ -278,14 +260,5 @@ class Response extends AbstractResponse
     public function getTransactionType()
     {
         return $this->getData('transactionType');
-    }
-
-    /**
-     * Set Transaction Type
-     * @return string|null Transaction type
-     */
-    public function setTransactionType($value)
-    {
-        return $this->transactionType = $value;
     }
 }
