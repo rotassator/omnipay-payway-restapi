@@ -119,15 +119,15 @@ class Response extends AbstractResponse
 
     /**
      * Get response data, optionally by key
-     * @param  string       $key Data array key
-     * @return string|array      Response data item or all data if no key specified
+     * @param  string $key Data array key
+     * @return string      Response data item or all data as JSON if no key specified
      */
     public function getData($key = null)
     {
         if ($key) {
             return isset($this->data[$key]) ? $this->data[$key] : null;
         }
-        return $this->data;
+        return json_encode($this->data);
     }
 
     /**
@@ -233,12 +233,30 @@ class Response extends AbstractResponse
     }
 
     /**
+     * Set request id
+     * @return AbstractRequest provides a fluent interface.
+     */
+    public function setRequestId($requestId)
+    {
+        $this->requestId = $requestId;
+    }
+
+    /**
      * Get HTTP Response Code
      * @return string
      */
     public function getHttpResponseCode()
     {
         return $this->httpResponseCode;
+    }
+
+    /**
+     * Set HTTP Response Code
+     * @parm string Response Code
+     */
+    public function setHttpResponseCode($value)
+    {
+        $this->httpResponseCode = $value;
     }
 
     /**
