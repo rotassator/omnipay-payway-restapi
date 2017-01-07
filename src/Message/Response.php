@@ -306,4 +306,13 @@ class Response extends AbstractResponse
     {
         return $this->getData('bankAccount');
     }
+
+    /**
+     * Set Transaction Type
+     * @return string|null Transaction type
+     */
+    public function setTransactionType($value)
+    {
+        return $this->transactionType = $value;
+    }
 }
