@@ -303,12 +303,12 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getTransactionId()
     {
-        return $this->getTransactionReference();
+        return $this->getParameter('transactionId');
     }
 
     public function setTransactionId($value)
     {
-        return $this->setTransactionReference($value);
+        return $this->setParameter('transactionId', $value);
     }
 
     public function getFrequency()
