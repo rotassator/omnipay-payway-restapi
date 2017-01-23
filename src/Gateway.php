@@ -130,4 +130,15 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\PaywayRest\Message\UpdateCustomerContactRequest', $parameters);
     }
+
+    /**
+     * Get Transaction details
+     * @param  array  $parameters
+     * @return \Omnipay\PaywayRest\Message\TransactionDetailRequest
+     */
+    public function getTransactionDetails(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaywayRest\Message\TransactionDetailRequest', $parameters);
+
+    }
 }
