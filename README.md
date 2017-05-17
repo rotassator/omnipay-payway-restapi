@@ -16,3 +16,11 @@ These initial features have now been implemented.
 
 See the [official PayWay documentation](https://www.payway.com.au/rest-docs/index.html) for full details.
 
+## Installation
+
+Install the module using composer.
+
+```
+composer require rotassator/omnipay-payway-restapi
+```
+
