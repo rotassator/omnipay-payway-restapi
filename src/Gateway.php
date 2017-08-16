@@ -152,4 +152,24 @@ class Gateway extends AbstractGateway
         return $this->createRequest('\Omnipay\PaywayRest\Message\TransactionDetailRequest', $parameters);
 
     }
+
+    /**
+     * Get List of Merchants
+     * @param array $parameters
+     * @return \Omnipay\PaywayRest\Message\MerchantListRequest
+     */
+    public function getMerchants(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaywayRest\Message\MerchantListRequest', $parameters);
+    }
+
+    /**
+     * Get List of Bank Accounts
+     * @param array $parameters
+     * @return \Omnipay\PaywayRest\Message\BankAccountListRequest
+     */
+    public function getBankAccounts(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaywayRest\Message\BankAccountListRequest', $parameters);
+    }
 }
