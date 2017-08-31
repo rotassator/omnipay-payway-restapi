@@ -37,6 +37,9 @@ class PurchaseRequest extends AbstractRequest
         if ($this->getBankAccountId()) {
             $data['bankAccountId'] = $this->getBankAccountId();
         }
+        if ($this->getSingleUseTokenId()) {
+            $data['singleUseTokenId'] = $this->getSingleUseTokenId();
+        }
 
         return $data;
     }
