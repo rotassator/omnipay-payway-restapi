@@ -113,7 +113,7 @@ class Gateway extends AbstractGateway
      * Create singleUseTokenId with a CreditCard
      *
      * @param array $parameters
-     * @return \Omnipay\PaywayRest\Message\CreateCustomerRequest
+     * @return \Omnipay\PaywayRest\Message\CreateSingleUseCardTokenRequest
      */
     public function createSingleUseCardToken(array $parameters = array())
     {
@@ -124,7 +124,7 @@ class Gateway extends AbstractGateway
      * Create singleUseTokenId with a Bank Account
      *
      * @param array $parameters
-     * @return \Omnipay\PaywayRest\Message\CreateCustomerRequest
+     * @return \Omnipay\PaywayRest\Message\CreateSingleUseBankTokenRequest
      */
     public function createSingleUseBankToken(array $parameters = array())
     {
