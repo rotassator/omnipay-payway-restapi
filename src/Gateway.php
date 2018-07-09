@@ -18,7 +18,7 @@ class Gateway extends AbstractGateway
         return array(
             'apiKeyPublic' => '',
             'apiKeySecret' => '',
-            'merchantId'   => '',
+            'merchantId' => '',
             'useSecretKey' => false,
         );
     }
@@ -107,6 +107,28 @@ class Gateway extends AbstractGateway
 
         // process once-off payment
         return $this->createRequest('\Omnipay\PaywayRest\Message\PurchaseRequest', $parameters);
+    }
+
+    /**
+     * Create singleUseTokenId with a CreditCard
+     *
+     * @param array $parameters
+     * @return \Omnipay\PaywayRest\Message\CreateCustomerRequest
+     */
+    public function createSingleUseCardToken(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaywayRest\Message\CreateSingleUseCardTokenRequest', $parameters);
+    }
+
+    /**
+     * Create singleUseTokenId with a Bank Account
+     *
+     * @param array $parameters
+     * @return \Omnipay\PaywayRest\Message\CreateCustomerRequest
+     */
+    public function createSingleUseBankToken(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaywayRest\Message\CreateSingleUseBankTokenRequest', $parameters);
     }
 
     /**

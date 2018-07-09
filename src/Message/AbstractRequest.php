@@ -202,6 +202,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('bankAccountId', $value);
     }
 
+    public function getBankAccountNumber()
+    {
+        return $this->getParameter('bankAccountNumber');
+    }
+
+    public function setBankAccountNumber($value)
+    {
+        return $this->getParameter('bankAccountNumber', $value);
+    }
+
     public function getCustomerName()
     {
         return $this->getParameter('customerName');
