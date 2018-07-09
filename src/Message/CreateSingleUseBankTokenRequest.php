@@ -6,7 +6,7 @@
 namespace Omnipay\PaywayRest\Message;
 
 /**
- * PaywayRest Create Customer Request
+ * PaywayRest Create Single Use Bank Account Token Request
  *
  * @link https://www.payway.com.au/docs/rest.html#tokenise-a-bank-account
  */
