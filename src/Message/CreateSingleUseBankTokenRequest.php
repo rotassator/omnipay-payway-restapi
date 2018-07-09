@@ -14,13 +14,13 @@ class CreateSingleUseBankTokenRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('bsb', 'accountNumber', 'accountName');
+        $this->validate('bankAccountBsb', 'bankAccountNumber', 'bankAccountName');
 
         return array(
             'paymentMethod' => 'bankAccount',
-            'bsb' => $this->getBankAccountId(),
+            'bsb' => $this->getBankAccountBsb(),
             'accountNumber' => $this->getBankAccountNumber(),
-            'accountName' => $this->getCustomerName(),
+            'accountName' => $this->getBankAccountName(),
         );
     }
 
