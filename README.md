@@ -49,8 +49,8 @@ $gateway->setTestMode(true);
 try {
     $response = $gateway->createSingleUseCardToken([
         'card' => new CreditCard([
-            'firstName' => 'Steve',
-            'lastName' => 'Dixon',
+            'firstName' => 'First Name',
+            'lastName' => 'Last Name',
             'number' => '4564710000000004',
             'expiryMonth' => '02',
             'expiryYear' => '2019',
@@ -59,15 +59,11 @@ try {
     ])->send();
 
     $singleUseTokenId = $response->getData('singleUseTokenId');
-} catch (Exception $e) {
-    // handle error
-}
 
-if (empty($singleUseTokenId)) {
-    // handle error
-}
+    if (empty($singleUseTokenId)) {
+        // handle error
+    }
 
-try {
     $request = $gateway->purchase([
         'singleUseTokenId' => $singleUseTokenId,
         'customerNumber' => 'AB1245',
@@ -85,14 +81,12 @@ try {
     // handle error
 }
 
-// create Bank Account single-use token.
-
+// Example for creating single-use token with Bank Account
 $response = $gateway->createSingleUseBankToken([
     'bankAccountBsb' => '999999',
     'bankAccountNumber' => '999999999',
-    'bankAccountName' => 'Steve Dixon',
+    'bankAccountName' => 'Your Name',
 ])->send();
 
 $singleUseTokenId = $response->getData('singleUseTokenId');
-
 ```
