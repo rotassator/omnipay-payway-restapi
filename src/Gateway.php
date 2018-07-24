@@ -18,7 +18,7 @@ class Gateway extends AbstractGateway
         return array(
             'apiKeyPublic' => '',
             'apiKeySecret' => '',
-            'merchantId' => '',
+            'merchantId'   => '',
             'useSecretKey' => false,
         );
     }
