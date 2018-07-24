@@ -2,6 +2,10 @@
 
 **WestPac PayWay REST API driver for the Omnipay PHP payment processing library**
 
+[![Latest Stable Version](https://poser.pugx.org/rotassator/omnipay-payway-restapi/v/stable)](https://packagist.org/packages/rotassator/omnipay-payway-restapi)
+[![Total Downloads](https://poser.pugx.org/rotassator/omnipay-payway-restapi/downloads)](https://packagist.org/packages/rotassator/omnipay-payway-restapi)
+[![License](https://poser.pugx.org/rotassator/omnipay-payway-restapi/license)](https://packagist.org/packages/rotassator/omnipay-payway-restapi)
+
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements PayWay REST API support for Omnipay.
 
