@@ -94,3 +94,16 @@ $response = $gateway->createSingleUseBankToken([
 
 $singleUseTokenId = $response->getData('singleUseTokenId');
 ```
+
+## Contributing
+
+Contributions are **welcome** and will be fully **credited**.
+
+Contributions can be made via a pull request on [Github](https://github.com/rotassator/omnipay-payway-restapi).
+
+## Support
+
+If you are having general issues with the package, feel free to report it to us.
+
+If you believe you have found a bug, please report it using the [GitHub issue tracker](https://github.com/rotassator/omnipay-payway-restapi/issues),
+or better yet, fork the library and submit a pull request.
