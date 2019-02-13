@@ -128,6 +128,28 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * Create singleUseTokenId with a CreditCard
+     *
+     * @param array $parameters
+     * @return \Omnipay\PaywayRest\Message\CreateSingleUseCardTokenRequest
+     */
+    public function createSingleUseCardToken(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaywayRest\Message\CreateSingleUseCardTokenRequest', $parameters);
+    }
+
+    /**
+     * Create singleUseTokenId with a Bank Account
+     *
+     * @param array $parameters
+     * @return \Omnipay\PaywayRest\Message\CreateSingleUseBankTokenRequest
+     */
+    public function createSingleUseBankToken(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PaywayRest\Message\CreateSingleUseBankTokenRequest', $parameters);
+    }
+
+    /**
      * Create Customer
      *
      * @param array $parameters
