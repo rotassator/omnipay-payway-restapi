@@ -100,7 +100,7 @@ $singleUseTokenId = $response->getData('singleUseTokenId');
 
 ### Solution
 
-Download CA certificate form [Curl](https://curl.haxx.se/docs/caextract.html) and place somewhere in your project root.
+[Download CA certificate](https://curl.haxx.se/docs/caextract.html) and place somewhere in your project root.
 
 eg. project/certificate/cacert.pem
 
