@@ -94,6 +94,28 @@ $response = $gateway->createSingleUseBankToken([
 
 $singleUseTokenId = $response->getData('singleUseTokenId');
 ```
+## Known Issue
+
+[curl] 60: SSL certificate problem: unable to get local issuer certificate.
+
+### Solution
+
+Download CA certificate form [Curl](https://curl.haxx.se/docs/caextract.html) and place somewhere in your project root.
+
+eg. project/certificate/cacert.pem
+
+In the gateway initialization object do like below.
+
+```php
+$gateway = Omnipay::create('PaywayRest_DirectDebit');
+
+$gateway->setApiKeyPublic('REPLACE');
+$gateway->setApiKeySecret('REPLACE');
+$gateway->setMerchantId('REPLACE');
+$gateway->setTestMode(true);
+
+$gateway->setSSLCertificatePath('path/cacert.pem');
+```
 
 ## Contributing
 
