@@ -78,6 +78,24 @@ class Gateway extends AbstractGateway
     }
 
     /**
+     * Set SSL Certificate Path
+     * @param  string $value SSL Certificate Path
+     */
+    public function setSSLCertificatePath($value)
+    {
+        return $this->setParameter('sslCertificatePath', $value);
+    }
+
+    /**
+     * Get SSL Certificate Path
+     * @return string SSL Certificate Path
+     */
+    public function getSSLCertificatePath()
+    {
+        return $this->getParameter('sslCertificatePath');
+    }
+
+    /**
      * Test the PayWay gateway
      * @param  array  $parameters Request parameters
      * @return \Omnipay\PaywayRest\Message\CheckNetworkRequest

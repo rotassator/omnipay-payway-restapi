@@ -402,6 +402,15 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('finalPrincipalAmount', $value);
     }
 
+    public function setSSLCertificatePath($value)
+    {
+        return $this->setParameter('sslCertificatePath', $value);
+    }
+
+    public function getSSLCertificatePath()
+    {
+        return $this->getParameter('sslCertificatePath');
+    }
 
     /**
      * Get HTTP method
@@ -459,6 +468,10 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
                 }
             }
         );
+
+        if ($this->getSSLCertificatePath()) {
+            $this->httpClient->setSslVerification($this->getSSLCertificatePath());
+        }
 
         $request = $this->httpClient->createRequest(
             $this->getHttpMethod(),
